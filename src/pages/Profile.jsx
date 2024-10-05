@@ -21,7 +21,7 @@ const Profile = () => {
           />
 
           {/* Full Name */}
-          <h2 className="text-2xl md:text-3xl text-gray-800 font-semibold mb-2">Full Name</h2>
+          <h2 className="text-2xl md:text-3xl text-blue-800 font-semibold mb-2">Full Name</h2>
 
           {/* Email */}
           <p className="text-gray-600 font-bold text-lg md:text-xl">example@gmail.com</p>

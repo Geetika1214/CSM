@@ -7,13 +7,14 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        'custom-radius': '25px', // Replace '15px' with your desired radius
+        'custom-radius': '26px', // Replace '15px' with your desired radius
       },
       colors :{
         slate:{
           700:"#3E6680",
         },
         blue:{
+          200: "#AABD8Cbu",
           900: "#1B3BBC",
         },
       }

@@ -8,7 +8,7 @@ const EmailVerificationForm = () => {
         <InputField type="text" placeholder="Enter Verification Code"/>
       </div>
 
-      <Button text="Submit"/>
+      <Button text="Submit" path="/"/>
     </form>
   );
 };
