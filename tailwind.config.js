@@ -5,7 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      borderRadius: {
+        'custom-radius': '25px', // Replace '15px' with your desired radius
+      },
+      colors :{
+        slate:{
+          700:"#3E6680",
+        },
+        blue:{
+          900: "#1B3BBC",
+        },
+      }
+    }, 
   },
   plugins: [],
 }

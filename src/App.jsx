@@ -1,9 +1,26 @@
-import React from 'react'
+import {BrowserRouter, Routes , Route} from 'react-router-dom';
+import Home from './pages/Home';
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp';
+import Profile from './pages/Profile';
+import Account from './pages/Account';
+import EmailVerification from './pages/EmailVerification';
+import ForgotPassword from './pages/forgotPassword';
+import GenerateNewPassword from './pages/generateNewPass';
 
 export default function App() {
   return (
-    <div>
-       <h1 className='text-red-400'>App</h1>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element= {<Home/>}></Route>
+      <Route path='/signin' element= {<SignIn/>}></Route>
+      <Route path='/forgotpassword' element= {<ForgotPassword/>}></Route>
+      <Route path='/generatenewpass' element = {<GenerateNewPassword/>}></Route>
+      <Route path='/profile' element= {<Profile/>}></Route>
+      <Route path='/signup' element= {<SignUp/>}></Route>
+      <Route path='/emailverification' element= {<EmailVerification/>}></Route>
+      <Route path='/account' element= {<Account/>}></Route>
+    </Routes>
+    </BrowserRouter>
   )
 }
