@@ -1,9 +1,30 @@
-import React from "react";
-import { FaPlus, FaFolder } from "react-icons/fa"; // Importing the FaPlus and FaFolder icons
+import React, { useState } from "react";
+import { FaPlus, FaFolder, FaEdit } from "react-icons/fa"; // Importing FaPlus, FaFolder, and FaEdit icons
 import { Link } from "react-router-dom"; // Import Link for navigation
 import Toolbar from "../Components/Toolbar";
-import Button from "../Components/Button";
+
 export const Project = () => {
+  const [projects, setProjects] = useState([
+    { id: 1, name: "Project Name 1" },
+    { id: 2, name: "Project Name 2" },
+    { id: 3, name: "Project Name 3" },
+  ]);
+
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editedName, setEditedName] = useState("");
+
+  const handleEditClick = (index) => {
+    setEditingIndex(index);
+    setEditedName(projects[index].name); // Pre-fill the input with the current project name
+  };
+
+  const handleUpdate = (index) => {
+    const updatedProjects = [...projects];
+    updatedProjects[index].name = editedName;
+    setProjects(updatedProjects);
+    setEditingIndex(null);
+  };
+
   return (
     <div id="webcrumbs" className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
@@ -22,15 +43,35 @@ export const Project = () => {
           <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
             <h2 className="text-lg font-semibold text-gray-700 mb-4">My Projects</h2>
             <div className="flex flex-col gap-4">
-              <Link to="/project/1" className="border border-gray-200 bg-white p-4 rounded-md shadow-sm transition-transform duration-200 hover:scale-105 flex items-center">
-                <span className="font-medium">Project Name 1</span>
-              </Link>
-              <Link to="/project/2" className="border border-gray-200 bg-white p-4 rounded-md shadow-sm transition-transform duration-200 hover:scale-105 flex items-center">
-                <span className="font-medium">Project Name 2</span>
-              </Link>
-              <Link to="/project/3" className="border border-gray-200 bg-white p-4 rounded-md shadow-sm transition-transform duration-200 hover:scale-105 flex items-center">
-                <span className="font-medium">Project Name 3</span>
-              </Link>
+              {projects.map((project, index) => (
+                <div key={project.id} className="flex items-center justify-between border border-gray-200 bg-white p-4 rounded-md shadow-sm">
+                  {editingIndex === index ? (
+                    <div className="flex items-center">
+                      <input
+                        type="text"
+                        value={editedName}
+                        onChange={(e) => setEditedName(e.target.value)}
+                        className="border border-gray-300 p-2 rounded-md"
+                      />
+                      <button
+                        onClick={() => handleUpdate(index)}
+                        className="ml-2 bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      <Link to={`/project/${project.id}`} className="font-medium flex-grow">
+                        {project.name}
+                      </Link>
+                      <button onClick={() => handleEditClick(index)} className="text-gray-600 hover:text-blue-500">
+                        <FaEdit />
+                      </button>
+                    </>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
