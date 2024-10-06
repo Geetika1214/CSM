@@ -1,55 +1,70 @@
 import React, { useState } from "react";
 import { FaSignOutAlt, FaBars, FaHome, FaUserAlt, FaCogs } from "react-icons/fa";
-
-const Toolbar = ({ currentTab, onTabClick }) => {
-  const [isOpen, setIsOpen] = useState(false); // Sidebar is closed by default for mobile view
+import { Link, useLocation } from "react-router-dom"; // Import Link for navigation and useLocation for current path
+import CSMLogo from "./CSMLogo";
+const Toolbar = () => {
+  const location = useLocation(); // Get the current location
+  const [isOpen, setIsOpen] = useState(true); // Sidebar is open by default for larger viewports
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   const navItems = [
-    { name: "Home", icon: <FaHome />, path: "/home" },
+    { name: "Home", icon: <FaHome />, path: "/" },
     { name: "Profile", icon: <FaUserAlt />, path: "/profile" },
-    { name: "Settings", icon: <FaCogs />, path: "/settings" },
+    { name: "Account", icon: <FaCogs />, path: "/account" },
   ];
 
   return (
-    <div className={`flex flex-col h-screen bg-gray-800 text-white transition-all duration-300 ${isOpen ? 'w-64' : 'w-0'} overflow-hidden md:w-64`}>
-      {/* CSM Logo */}
-      <div className="flex items-center justify-center py-6 bg-gray-400 mb-6">
-        <h2 className="text-3xl font-bold">CSM</h2>
-      </div>
-
-      {/* Navigation Items */}
-      <ul className="space-y-4 px-4">
-        {navItems.map((item, index) => (
-          <li
-            key={index}
-            className={`flex items-center space-x-4 px-4 py-2 cursor-pointer rounded-lg hover:bg-gray-700 ${currentTab === item.name ? 'bg-gray-700' : ''}`}
-            onClick={() => onTabClick(item.path)}
-          >
-            <span>{item.icon}</span>
-            <span>{item.name}</span>
-          </li>
-        ))}
-      </ul>
-
-      {/* Sign Out */}
-      <div className="absolute bottom-8 w-full px-4">
-        <button className="flex items-center w-auto space-x-4 px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-white">
-          <FaSignOutAlt />
-          <span>Sign Out</span>
-        </button>
-      </div>
-
-      {/* Toggle Button for Mobile */}
+    <div className="relative">
+      {/* Toggle Button - always visible */}
       <button
         onClick={toggleSidebar}
-        className="text-gray-900 absolute top-4 left-4 z-50 md:hidden focus:outline-none"
+        className="text-gray-700 absolute top-4 left-4 z-50 focus:outline-none"
+        style={{ zIndex: 1000 }}  // Ensures it's always on top
       >
-        <FaBars className="text-3xl" />
+        <FaBars className="text-2xl" />
       </button>
+
+      {/* Sidebar */}
+      <div
+        className={`fixed md:relative z-40 h-screen bg-gray-100 text-gray-800 transition-all duration-300 transform ${
+          isOpen ? "translate-x-0 opacity-100 w-64" : "-translate-x-full opacity-0"
+        }`}
+        style={{ pointerEvents: isOpen ? 'auto' : 'none' }} // Disables interaction when closed
+      >
+        
+        <CSMLogo />
+
+        {/* Navigation Items */}
+        <ul className="space-y-4 px-4">
+          {navItems.map((item, index) => (
+            <li
+              key={index}
+              className={`flex items-center space-x-4 px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300
+                ${location.pathname === item.path ? "bg-gray-300" : "hover:bg-gray-200"}
+              `}
+            >
+              <Link
+                to={item.path} // Link to the corresponding path
+                className="flex items-center space-x-4 w-full"
+              >
+                <span>{item.icon}</span>
+                <span>{item.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Sign Out */}
+        <div className="absolute bottom-8 w-full px-4">
+          <button className="flex items-center w-auto space-x-4 px-4 py-2 bg-red-500 hover:bg-red-600 rounded-lg text-white">
+            <FaSignOutAlt />
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </div>
 
       {/* Overlay for mobile view */}
       {isOpen && (
@@ -58,7 +73,6 @@ const Toolbar = ({ currentTab, onTabClick }) => {
           onClick={toggleSidebar}
         ></div>
       )}
-
     </div>
   );
 };

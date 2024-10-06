@@ -17,6 +17,9 @@ export default {
           200: "#AABD8Cbu",
           900: "#1B3BBC",
         },
+        gray:{
+         200:"#F5F5F5"
+        },
       }
     }, 
   },

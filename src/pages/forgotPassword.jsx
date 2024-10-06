@@ -1,22 +1,15 @@
 import React from 'react';
-import Container from '../Components/Container'; // Import your Container component
-import InputField from '../Components/InputField'; // Import your InputField component
-import Button from '../Components/Button'; // Import your Button component
-// import { useHistory } from 'react-router-dom'; // For navigation
+import Container from '../Components/Container';
+import InputField from '../Components/InputField';
+import Button from '../Components/Button';
+import SecondaryButton from '../Components/SecondaryButton';
 
 const ForgotPassword = () => {
-    // const history = useHistory(); // For navigation to Sign In page
-
-    // const handleResetPassword = (e) => {
-    //     e.preventDefault();
-    //     // Logic to handle password reset goes here
-    // };
-
     return (
         <Container>
             <h2 className="text-2xl font-bold text-center mb-6">Forgot Your Password?</h2>
 
-            <form  className="space-y-4">
+            <form className="space-y-4">
                 {/* Email Input */}
                 <InputField 
                     type="email" 
@@ -24,12 +17,11 @@ const ForgotPassword = () => {
                 />
 
                 {/* Reset Password Button */}
-                <Button text="Reset Password" />
-                <Button text="Back to Sign In"/>
+                <Button text="Reset Password" path="/generatenewpass" />
+                
+                {/* Back to Sign In Button */}
+                <SecondaryButton text="Back to Sign In" path="/signin" />
             </form>
-
-            
-           
         </Container>
     );
 };

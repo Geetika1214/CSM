@@ -7,6 +7,8 @@ import Account from './pages/Account';
 import EmailVerification from './pages/EmailVerification';
 import ForgotPassword from './pages/forgotPassword';
 import GenerateNewPassword from './pages/generateNewPass';
+import FileUploadPage from './pages/FileUploadPage';
+import { Project } from './pages/project';
 
 export default function App() {
   return (
@@ -20,6 +22,10 @@ export default function App() {
       <Route path='/signup' element= {<SignUp/>}></Route>
       <Route path='/emailverification' element= {<EmailVerification/>}></Route>
       <Route path='/account' element= {<Account/>}></Route>
+      <Route path='/fileupload' element= {<FileUploadPage/>}></Route>
+      <Route path='/project' element= {<Project/>}></Route>
+
+
     </Routes>
     </BrowserRouter>
   )
