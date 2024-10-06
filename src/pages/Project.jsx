@@ -2,7 +2,7 @@ import React from "react";
 import { FaPlus, FaFolder } from "react-icons/fa"; // Importing the FaPlus and FaFolder icons
 import { Link } from "react-router-dom"; // Import Link for navigation
 import Toolbar from "../Components/Toolbar";
-
+import Button from "../Components/Button";
 export const Project = () => {
   return (
     <div id="webcrumbs" className="flex min-h-screen bg-gray-100">
@@ -15,7 +15,7 @@ export const Project = () => {
       <div className="flex-1 p-8">
         <div className="bg-white shadow-lg rounded-lg p-8">
           <h1 className="font-title text-3xl font-semibold text-gray-800 mb-6">
-            <FaFolder className="inline mr-2 text-blue-600" /> Projects
+            <FaFolder className="inline mr-2 text-slate-600" /> Projects
           </h1>
 
           {/* Project List */}
@@ -36,7 +36,7 @@ export const Project = () => {
 
           {/* Add Project Button */}
           <div className="mt-8 flex justify-center">
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-md flex items-center justify-center gap-2 shadow-md hover:bg-blue-700 transition duration-200">
+            <button className="bg-slate-700 text-white px-6 py-2 rounded-md flex items-center justify-center gap-2 shadow-md hover:bg-blue-700 transition duration-200">
               Add New Project
               <FaPlus />
             </button>
