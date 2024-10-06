@@ -9,7 +9,7 @@ import ForgotPassword from './pages/forgotPassword';
 import GenerateNewPassword from './pages/generateNewPass';
 import FileUploadPage from './pages/FileUploadPage';
 import { Project } from './pages/project';
-
+import ProjectDetail from './pages/ProjectDetail';
 export default function App() {
   return (
     <BrowserRouter>
@@ -24,6 +24,7 @@ export default function App() {
       <Route path='/account' element= {<Account/>}></Route>
       <Route path='/fileupload' element= {<FileUploadPage/>}></Route>
       <Route path='/project' element= {<Project/>}></Route>
+      <Route path="/project/:id" element={<ProjectDetail />} />
 
 
     </Routes>

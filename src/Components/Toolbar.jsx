@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaSignOutAlt, FaBars, FaHome, FaUserAlt, FaCogs } from "react-icons/fa";
+import { FaSignOutAlt, FaBars, FaHome, FaUserAlt, FaCogs, FaFolder } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom"; // Import Link for navigation and useLocation for current path
 import CSMLogo from "./CSMLogo";
 const Toolbar = () => {
@@ -14,6 +14,8 @@ const Toolbar = () => {
     { name: "Home", icon: <FaHome />, path: "/" },
     { name: "Profile", icon: <FaUserAlt />, path: "/profile" },
     { name: "Account", icon: <FaCogs />, path: "/account" },
+    { name: "Project", icon: <FaFolder />, path: "/project" },
+
   ];
 
   return (
