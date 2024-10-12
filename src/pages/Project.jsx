@@ -28,9 +28,7 @@ export const Project = () => {
   return (
     <div id="webcrumbs" className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className="w-1/5 bg-gray-200 p-6 shadow-lg">
         <Toolbar className="h-full bg-gray-200" />
-      </div>
 
       {/* Main Content Area */}
       <div className="flex-1 p-8">
